@@ -1,5 +1,5 @@
 {
-  "home": "http://Shashankkumar26.github.io/Heliverse-Assignment", 
+  "homepage": "http://Shashankkumar26.github.io/Heliverse-Assignment",
   "name": "assignment",
   "version": "0.1.0",
   "private": true,
@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy" :"npm run build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
