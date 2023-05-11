@@ -19,12 +19,12 @@ const Data = () => {
   };
   
   const handlegender =(gen)=>{
-    console.log(gen);
+    
     setGender(gen);
   }
 
   const handleDomain=(dom)=>{
-    console.log(dom);
+    
     setDomain(dom);
   }
   const handleAvailability=() =>{
