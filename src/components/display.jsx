@@ -47,6 +47,17 @@ const Data = () => {
     update[e.id - 1].available = false;
     setPeople(update);
   };
+  const handleRemove= (e)=>{
+    
+   
+    let updated = team.filter(t=> t.id !=e.id);
+    setTeam(updated);
+    updated = people ;
+    updated[e.id - 1].available = true;
+    setPeople(updated);
+    
+     
+  };
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
@@ -128,7 +139,7 @@ const Data = () => {
             <th scope="col">Gender</th>
             <th scope="col">Domain</th>
             <th scope="col">Availability</th>
-            <th scope="col">Add</th>
+            <th scope="col">Remove</th>
           </tr>
         </thead>
 
@@ -142,17 +153,7 @@ const Data = () => {
               <td>{p.gender}</td>
               <td>{p.domain}</td>
               <td>{p.available ? "Available" : "Not Available"}</td>
-              <td
-                onClick={() => {
-                  handleAdd(p);
-                }}
-              >
-                {p.available ? (
-                  <button className="btn btn-primary">Add</button>
-                ) : (
-                  <button className="btn btn-primary disabled">Add</button>
-                )}
-              </td>
+              <td> <button className="btn btn-danger" on onClick={()=>handleRemove(p)}>Remove</button></td>
             </tr>
           ))}
         </tbody>
