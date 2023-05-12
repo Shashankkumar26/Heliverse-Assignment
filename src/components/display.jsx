@@ -4,6 +4,8 @@ import Pagination from "./pagination";
 import "bootstrap/dist/css/bootstrap.css";
 import Filter from "./filter";
 
+import { Button } from "bootstrap";
+
 const Data = () => {
  
   const [search, setSearch]= useState('');
@@ -12,7 +14,8 @@ const Data = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [gender, setGender]=useState('');
   const [availability,setAvailability] =useState(false);
- 
+  const [team, setTeam] =useState([]);
+  let [people,setPeople]= useState(peoples);
   const pageSize= 20;
   const handleChange = (page) => {
     setCurrentPage(page);
@@ -27,20 +30,31 @@ const Data = () => {
     
     setDomain(dom);
   }
-  const handleAvailability=() =>{
-      setAvailability(!availability);
+  const handleAvailability=(e) =>{
+      setAvailability(!e);
   }
   const handleAll =()=>{
     setAll(!all);
   }
-   
+   const handleAdd =(e)=>{
+    let temp = team;
+   if(e.available){
+       temp.push(e);
+   }
+    setTeam(temp);
+    let update= people;
+    update[e.id-1].available=false;
+    setPeople(update);
+    console.log(team);
+    
+   }
  
    
       const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
  
 
- let people=peoples;
+ 
   if(!all){
   people = peoples.filter(data=>{
     return search.toLocaleLowerCase()==='' ? data : data.first_name.toLowerCase().includes(search)
@@ -53,7 +67,9 @@ const Data = () => {
  })
 }
    const pageData=people.slice(startIndex, endIndex);
-
+   useEffect(()=>{
+    
+   },[team,people])
    useEffect(()=>{
      setAll(false);
    },[domain,gender,availability] )
@@ -69,9 +85,10 @@ const Data = () => {
             itemSelect =  {handleDomain}
             genderSelect = {handlegender}
             availableSelect= {handleAvailability}
-            available ={true}
+            available ={availability}
             all ={true}
             allSelect={handleAll}
+          
             
             
             />
@@ -86,6 +103,8 @@ const Data = () => {
             <th scope="col">Gender</th>
             <th scope="col">Domain</th>
             <th scope="col">Availability</th>
+            <th scope="col">Add</th>
+           
           </tr>
         </thead>
 
@@ -99,6 +118,7 @@ const Data = () => {
               <td>{p.gender}</td>
               <td>{p.domain}</td>
               <td>{p.available ? "Available" : "Not Available"}</td>
+              <td onClick={()=>{handleAdd(p)}}>{p.available ? (  <button className="btn btn-primary">Add</button>  ) : (  <button className="btn btn-primary disabled">Add</button>  ) }</td>
             </tr>
           ))}
         </tbody>
@@ -109,7 +129,34 @@ const Data = () => {
         </div>
    
        
+        <table className="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Domain</th>
+            <th scope="col">Availability</th>
+            <th scope="col">Add</th>
+           
+          </tr>
+        </thead>
 
+        <tbody>
+          {team.map((p) => (
+            <tr key={p.id}>
+              <td scope="row">{p.id}</td>
+              <td>
+                {p.first_name} {p.last_name}
+              </td>
+              <td>{p.gender}</td>
+              <td>{p.domain}</td>
+              <td>{p.available ? "Available" : "Not Available"}</td>
+              <td onClick={()=>{handleAdd(p)}}>{p.available ? (  <button className="btn btn-primary">Add</button>  ) : (  <button className="btn btn-primary disabled">Add</button>  ) }</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       
       <Pagination
         pageSize={pageSize}

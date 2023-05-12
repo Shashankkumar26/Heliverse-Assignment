@@ -9,7 +9,7 @@ const  Filter = ({itemSelect,genderSelect,availableSelect,available,all,allSelec
   
   <li className="list-group-item" onClick={()=>genderSelect("Male")}>MALE</li>
   <li className="list-group-item" onClick={()=>genderSelect("Female")}>FEMALE</li>
-  <li className="list-group-item" onClick={()=>availableSelect(!available)}>Available</li>
+  <li className="list-group-item" onClick={()=>availableSelect(available)}>Available</li>
   <li className="list-group-item" onClick={()=>itemSelect("IT")}>IT</li>
   <li className="list-group-item" onClick={()=>itemSelect("Business Development")}>Bussiness Development</li>
   <li className="list-group-item" onClick={()=>itemSelect("Finance")}>Finance</li>
@@ -17,6 +17,8 @@ const  Filter = ({itemSelect,genderSelect,availableSelect,available,all,allSelec
   <li className="list-group-item" onClick={()=>itemSelect("UI Designing")}>UIDesign</li>
   <li className="list-group-item" onClick={()=>itemSelect("Marketing")}>Marketing</li>
   <li className="list-group-item" onClick={()=>itemSelect("Management")}>Management</li>
+
+  
 </ul>
      );
 }
