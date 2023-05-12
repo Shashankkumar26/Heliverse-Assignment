@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import peoples from "../constants/heliverse_mock_data.json";
 import Pagination from "./pagination";
 import "bootstrap/dist/css/bootstrap.css";
 import Filter from "./filter";
 
-import { Button } from "bootstrap";
+
 
 const Data = () => {
   const [search, setSearch] = useState("");
@@ -20,6 +20,8 @@ const Data = () => {
   const handleChange = (page) => {
     setCurrentPage(page);
   };
+ 
+  
 
   const handlegender = (gen) => {
     let data;
@@ -87,7 +89,9 @@ const Data = () => {
               </thead>
 
               <tbody>
-                {pageData.map((p) => (
+                {pageData.filter(p=>{
+                  return search.toLowerCase()==="" ? p : p.first_name.toLowerCase().includes(search)
+                }).map((p) => (
                   <tr key={p.id}>
                     <td scope="row">{p.id}</td>
                     <td>
