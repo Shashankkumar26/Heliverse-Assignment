@@ -42,10 +42,12 @@ const Data = () => {
     setFilteredPeople(people);
   };
   const handleAdd = (e) => {
+    if(e.available==true){
     setTeam((prev) => [...prev, e]);
     let update = people;
     update[e.id - 1].available = false;
     setPeople(update);
+    }
   };
   const handleRemove= (e)=>{
     
