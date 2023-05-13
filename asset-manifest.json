@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Heliverse-Assignment/static/css/main.844a864b.css",
-    "main.js": "/Heliverse-Assignment/static/js/main.2d3b5226.js",
+    "main.js": "/Heliverse-Assignment/static/js/main.9961611b.js",
     "static/js/787.0420ccf9.chunk.js": "/Heliverse-Assignment/static/js/787.0420ccf9.chunk.js",
     "index.html": "/Heliverse-Assignment/index.html",
     "main.844a864b.css.map": "/Heliverse-Assignment/static/css/main.844a864b.css.map",
-    "main.2d3b5226.js.map": "/Heliverse-Assignment/static/js/main.2d3b5226.js.map",
+    "main.9961611b.js.map": "/Heliverse-Assignment/static/js/main.9961611b.js.map",
     "787.0420ccf9.chunk.js.map": "/Heliverse-Assignment/static/js/787.0420ccf9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.844a864b.css",
-    "static/js/main.2d3b5226.js"
+    "static/js/main.9961611b.js"
   ]
 }
